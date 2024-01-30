@@ -12,17 +12,9 @@ class PostList(generic.ListView):
 
 
 def post_detail(request, slug):
-    """
-    Siplay and individual :model: 'blog.Post',
-
-    **context**
-
-    ``post``
-        an instance of :model:`blog.Post`.
-
-    **template**
-        :template:`blog/post_detail.html`
-    """
+    
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
-    return render(request, "blog/post_detail.html", {"post": post},)
+    
+    return render(request, "blog/post_detail.html",
+         {"post": post},)
